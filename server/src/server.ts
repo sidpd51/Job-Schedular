@@ -4,6 +4,7 @@ import { logger } from './config/logger.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import { appErrorHandler } from './middlewares/error.middleware';
 import router from './routers/v1';
+import { fetchJobsFromXML } from './services/fetchJobs';
 
 
 const app = express();
@@ -19,4 +20,6 @@ app.use(appErrorHandler);
 app.listen(PORT, async () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     logger.info('Database connection has been established successfully!');
+    const data = await fetchJobsFromXML(serverConfig.URL);
+    console.log(data.length);
 });
