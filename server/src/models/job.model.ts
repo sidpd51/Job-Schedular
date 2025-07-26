@@ -1,6 +1,7 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IJob extends Document {
+    id: number;
     title: string;
     link: string;
     pubDate: Date;
@@ -24,6 +25,7 @@ export interface IJob extends Document {
 
 const JobSchema: Schema<IJob> = new Schema(
     {
+        id: { type: Number, required: true, unique: true },
         title: { type: String, required: true },
         link: { type: String, required: true },
         pubDate: { type: Date, required: true },
