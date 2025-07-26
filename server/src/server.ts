@@ -4,6 +4,8 @@ import { getMongoClient } from './config/mongo.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import { appErrorHandler } from './middlewares/error.middleware';
 import router from './routers/v1';
+import { startWorker } from './workers/job.worker';
+import { fetchAndInsert } from './services/feedToQueue.service';
 
 
 const app = express();
@@ -21,4 +23,8 @@ app.listen(PORT, async () => {
     await getMongoClient();
     // const data = await fetchJobsFromXML(serverConfig.URL);
     // console.log(data.length);
+    await fetchAndInsert();
+    setTimeout(() => {
+        startWorker();
+    }, 5000);
 });
