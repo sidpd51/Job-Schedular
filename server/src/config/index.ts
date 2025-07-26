@@ -7,6 +7,7 @@ type ServerConfigType = {
     REDIS_HOST: string;
     REDIS_PORT: number;
     REDIS_PASSWORD: string;
+    MONGODB_ATLAS_URI: string;
 }
 
 function loadEnv() {
@@ -22,6 +23,7 @@ export const serverConfig: ServerConfigType = {
     REDIS_HOST: process.env.REDIS_HOST!,
     REDIS_PORT: Number(process.env.REDIS_PORT)!,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
+    MONGODB_ATLAS_URI: process.env.MONGODB_ATLAS_URI!
 };
 
 export const parser = new XMLParser({
