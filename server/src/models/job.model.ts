@@ -22,7 +22,7 @@ export interface IJob extends Document {
     updatedAt?: Date;
 }
 
-const JobSchema: Schema<IJob> = new Schema(
+export const JobSchema: Schema<IJob> = new Schema(
     {
         id: { type: Number, required: true, unique: true },
         title: { type: String, required: true },
