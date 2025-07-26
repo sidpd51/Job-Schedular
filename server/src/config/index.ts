@@ -4,6 +4,9 @@ import { XMLParser } from 'fast-xml-parser';
 type ServerConfigType = {
     PORT: number;
     URL: string;
+    REDIS_HOST: string;
+    REDIS_PORT: number;
+    REDIS_PASSWORD: string;
 }
 
 function loadEnv() {
@@ -15,9 +18,11 @@ loadEnv();
 
 export const serverConfig: ServerConfigType = {
     PORT: Number(process.env.PORT) || 3000,
-    URL: process.env.URL || ''
+    URL: process.env.URL || '',
+    REDIS_HOST: process.env.REDIS_HOST!,
+    REDIS_PORT: Number(process.env.REDIS_PORT)!,
+    REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
 };
-
 
 export const parser = new XMLParser({
     ignoreAttributes: false,

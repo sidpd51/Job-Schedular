@@ -4,7 +4,7 @@ import { logger } from './config/logger.config';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import { appErrorHandler } from './middlewares/error.middleware';
 import router from './routers/v1';
-import { fetchJobsFromXML } from './services/fetchJobs';
+import { fetchJobsFromXML } from './services/fetchJobs.service';
 
 
 const app = express();
