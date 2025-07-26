@@ -18,7 +18,6 @@ export interface IJob extends Document {
     'job_listing:location'?: string;
     'job_listing:job_type'?: string;
     'job_listing:company'?: string;
-    returnValue?: any;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -42,7 +41,6 @@ const JobSchema: Schema<IJob> = new Schema(
         'job_listing:location': { type: String },
         'job_listing:job_type': { type: String },
         'job_listing:company': { type: String },
-        returnValue: { type: mongoose.Schema.Types.Mixed, default: null }
     },
     { timestamps: true }
 );
