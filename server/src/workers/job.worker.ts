@@ -41,6 +41,7 @@ export const startWorker = () => {
 
         // call api to create import_log
         await createImportLog({
+            fileName: serverConfig.URL,
             timestamp: new Date(),
             totalFetched,
             newJobs,

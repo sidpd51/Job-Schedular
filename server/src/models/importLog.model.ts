@@ -6,6 +6,7 @@ export interface IFailedJob {
 }
 
 export interface IImportLog extends Document {
+    fileName: string;
     timestamp: Date;
     totalFetched: number;
     totalImported: number;
@@ -20,6 +21,7 @@ const FailedJobSchema = new Schema<IFailedJob>({
 });
 
 const ImportLogSchema: Schema<IImportLog> = new Schema({
+    fileName: { type: String, required: true },
     timestamp: { type: Date, default: Date.now },
     totalFetched: { type: Number, required: true },
     totalImported: { type: Number, required: true },
