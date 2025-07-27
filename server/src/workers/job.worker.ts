@@ -1,10 +1,11 @@
 import { Job, QueueEvents, Worker } from "bullmq";
-import { getRedisClient } from "../config/redis.config";
-import { JOB_QUEUE } from "../queues/job.queue";
 import { serverConfig } from "../config";
-import { createOrUpdateJob } from "../repositories/job.repository";
+import { logger } from "../config/logger.config";
+import { getRedisClient } from "../config/redis.config";
 import { IFailedJob } from "../models/importLog.model";
+import { JOB_QUEUE } from "../queues/job.queue";
 import { createImportLog } from "../repositories/ImportLog.repository";
+import { createOrUpdateJob } from "../repositories/job.repository";
 
 let newJobs = 0;
 let updatedJobs = 0;
@@ -27,6 +28,7 @@ export const startWorker = () => {
                 job: data,
                 reason: error.message
             });
+
         }
     }, { connection: getRedisClient(), concurrency: serverConfig.WORKER_CONCURRENCY });
 
@@ -47,6 +49,9 @@ export const startWorker = () => {
             totalImported: (updatedJobs + newJobs)
         });
 
+        logger.info(`[QueueEvents] Import Log Created — Total: ${totalFetched}, New: ${newJobs}, Updated: ${updatedJobs}, Failed: ${failedJobs.length}`);
+
+        //reset fields
         totalFetched = 0;
         newJobs = 0;
         updatedJobs = 0;

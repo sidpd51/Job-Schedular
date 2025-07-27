@@ -1,8 +1,7 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
-import { IJob, JobSchema } from "./job.model"; // adjust the path as needed
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IFailedJob {
-    job: IJob;  // Reference to the IJob interface
+    job: any;  // Reference to the IJob interface
     reason: string;
 }
 
@@ -16,7 +15,7 @@ export interface IImportLog extends Document {
 }
 
 const FailedJobSchema = new Schema<IFailedJob>({
-    job: { type: JobSchema, required: true },
+    job: { type: Schema.Types.Mixed, required: true },
     reason: { type: String, required: true }
 });
 
