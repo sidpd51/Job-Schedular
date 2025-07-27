@@ -1,6 +1,7 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IJob extends Document {
+    id: number;
     title: string;
     link: string;
     pubDate: Date;
@@ -17,13 +18,13 @@ export interface IJob extends Document {
     'job_listing:location'?: string;
     'job_listing:job_type'?: string;
     'job_listing:company'?: string;
-    returnValue?: any;
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-const JobSchema: Schema<IJob> = new Schema(
+export const JobSchema: Schema<IJob> = new Schema(
     {
+        id: { type: Number, required: true, unique: true },
         title: { type: String, required: true },
         link: { type: String, required: true },
         pubDate: { type: Date, required: true },
@@ -40,7 +41,6 @@ const JobSchema: Schema<IJob> = new Schema(
         'job_listing:location': { type: String },
         'job_listing:job_type': { type: String },
         'job_listing:company': { type: String },
-        returnValue: { type: mongoose.Schema.Types.Mixed, default: null }
     },
     { timestamps: true }
 );
