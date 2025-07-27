@@ -4,7 +4,8 @@ const HomePage = () => {
     return (
         <div>
             <Navbar />
-        </div>
+            <h1>History</h1>
+        </div >
     )
 }
 
