@@ -1,9 +1,8 @@
 import { logger } from "../config/logger.config";
-import { CreateImportLogDTO } from "../dtos/dtos";
-import ImportLog from "../models/importLog.model";
+import ImportLog, { IImportLog } from "../models/importLog.model";
 
 
-export const createImportLog = async (paylod: CreateImportLogDTO) => {
+export const createImportLog = async (paylod: Partial<IImportLog>) => {
     try {
         await ImportLog.create(paylod);
     } catch (error) {
@@ -12,11 +11,6 @@ export const createImportLog = async (paylod: CreateImportLogDTO) => {
 }
 
 export const getAllImportLogs = async () => {
-    try {
-        const logs = await ImportLog.find({});
-        return logs;
-    } catch (error) {
-        logger.error("Something went wrong while getting ImportLogs!");
-        return error;
-    }
+    const logs = await ImportLog.find({});
+    return logs;
 }
