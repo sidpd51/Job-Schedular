@@ -44,8 +44,9 @@ export const startWorker = () => {
             newJobs,
             updatedJobs,
             failedJobs,
+            totalImported: (updatedJobs + newJobs)
         });
-        
+
         totalFetched = 0;
         newJobs = 0;
         updatedJobs = 0;

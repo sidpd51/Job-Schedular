@@ -4,7 +4,8 @@ import ImportLog, { IImportLog } from "../models/importLog.model";
 
 export const createImportLog = async (paylod: Partial<IImportLog>) => {
     try {
-        await ImportLog.create(paylod);
+        const log = await ImportLog.create(paylod);
+        logger.info(`ImportedLog created with id: ${log._id}`)
     } catch (error) {
         logger.error("Something went wrong while creating ImportLog!");
     }
