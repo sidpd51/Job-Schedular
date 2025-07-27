@@ -4,6 +4,7 @@ import { JOB_QUEUE } from "../queues/job.queue";
 import { serverConfig } from "../config";
 import { createOrUpdateJob } from "../repositories/job.repository";
 import { IFailedJob } from "../models/importLog.model";
+import { createImportLog } from "../repositories/ImportLog.repository";
 
 let newJobs = 0;
 let updatedJobs = 0;
@@ -37,7 +38,14 @@ export const startWorker = () => {
         if (!totalFetched) return;
 
         // call api to create import_log
-
+        await createImportLog({
+            timestamp: new Date(),
+            totalFetched,
+            newJobs,
+            updatedJobs,
+            failedJobs,
+        });
+        
         totalFetched = 0;
         newJobs = 0;
         updatedJobs = 0;
