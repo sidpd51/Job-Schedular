@@ -10,6 +10,7 @@ type ServerConfigType = {
     MONGODB_ATLAS_URI: string;
     WORKER_CONCURRENCY: number;
     BATCHING_SIZE: number;
+    CRON_SCHEDULE: string;
 }
 
 function loadEnv() {
@@ -27,7 +28,8 @@ export const serverConfig: ServerConfigType = {
     REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
     MONGODB_ATLAS_URI: process.env.MONGODB_ATLAS_URI!,
     WORKER_CONCURRENCY: Number(process.env.WORKER_CONCURRENCY) || 5,
-    BATCHING_SIZE: Number(process.env.BATCHING_SIZE) || 1000
+    BATCHING_SIZE: Number(process.env.BATCHING_SIZE) || 1000,
+    CRON_SCHEDULE: process.env.CRON_SCHEDULE || '0 * * * *'
 };
 
 export const parser = new XMLParser({
