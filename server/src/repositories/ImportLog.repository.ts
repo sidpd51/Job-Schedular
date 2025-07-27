@@ -12,11 +12,6 @@ export const createImportLog = async (paylod: CreateImportLogDTO) => {
 }
 
 export const getAllImportLogs = async () => {
-    try {
-        const logs = await ImportLog.find({});
-        return logs;
-    } catch (error) {
-        logger.error("Something went wrong while getting ImportLogs!");
-        return error;
-    }
+    const logs = await ImportLog.find({});
+    return logs;
 }
