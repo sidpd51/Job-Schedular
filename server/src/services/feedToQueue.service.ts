@@ -6,7 +6,7 @@ import { fetchJobsFromXML } from "./fetchJobs.service"
 export const fetchAndInsert = async () => {
     const jobs = await fetchJobsFromXML(serverConfig.URL);
     if (jobs.length > 0) {
-        await addJobToQueue(jobs);
+        await addJobToQueue(jobs, serverConfig.BATCHING_SIZE);
     }
     logger.info("Fetched and enqueued jobs");
 }
