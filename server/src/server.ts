@@ -6,10 +6,12 @@ import { appErrorHandler } from './middlewares/error.middleware';
 import router from './routers/v1';
 import { startWorker } from './workers/job.worker';
 import { startCronJobs } from './cronJobs/job.cron';
+import cors from 'cors';
 
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 
 const PORT: number = serverConfig.PORT;

@@ -11,6 +11,7 @@ type ServerConfigType = {
     WORKER_CONCURRENCY: number;
     BATCHING_SIZE: number;
     CRON_SCHEDULE: string;
+    FRONTEND_URL: string;
 }
 
 function loadEnv() {
@@ -29,7 +30,8 @@ export const serverConfig: ServerConfigType = {
     MONGODB_ATLAS_URI: process.env.MONGODB_ATLAS_URI!,
     WORKER_CONCURRENCY: Number(process.env.WORKER_CONCURRENCY) || 5,
     BATCHING_SIZE: Number(process.env.BATCHING_SIZE) || 1000,
-    CRON_SCHEDULE: process.env.CRON_SCHEDULE || '0 * * * *'
+    CRON_SCHEDULE: process.env.CRON_SCHEDULE || '0 * * * *',
+    FRONTEND_URL: process.env.FRONTEND_URL || 'http://localhost:5173'
 };
 
 export const parser = new XMLParser({
