@@ -5,7 +5,7 @@ import { StatusCodes } from "http-status-codes";
 
 export const getAllImportLogsHandler = async (req: Request, res: Response, next: NextFunction) => {
     const page = req.query.page ? Number(req.query.page) : 1;
-    const limit = req.query.limit ? Number(req.query.limit) : 16;
+    const limit = req.query.limit ? Number(req.query.limit) : 10;
 
     const logs = await getAllImportLogsService(page, limit);
     logger.info("Got all ImportLogs successfully");
