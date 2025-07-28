@@ -1,7 +1,7 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IFailedJob {
-    job: any;  // Reference to the IJob interface
+    job: any;
     reason: string;
 }
 
