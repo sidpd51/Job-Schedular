@@ -7,7 +7,7 @@ export const columns: ColumnDef<IData>[] = [
         header: "File Name",
         cell: (props: CellContext<IData, string>) => {
             const value = props.getValue();
-            return <p>{value.length > 40 ? `${value.slice(0, 40)}...` : value}</p>;
+            return <p>{value?.length > 40 ? `${value.slice(0, 40)}...` : value}</p>;
         },
     },
     {
