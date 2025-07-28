@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchImportLog } from "../lib/api";
 
-export interface IFailedJob {
+export type IFailedJob = {
   job: unknown;
   reason: string;
 }
 
-export interface IData {
+export type IData = {
   fileName: string;
   timestamp: Date;
   totalFetched: number;
@@ -16,7 +16,7 @@ export interface IData {
   failedJobs: number;
 }
 
-export interface ImportLog {
+export type ImportLog = {
   data: IData[],
   meta: {
     totalCount: number,

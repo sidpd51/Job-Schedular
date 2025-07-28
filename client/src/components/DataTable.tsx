@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-table';
 import type { IData } from '../hooks/useImportLog';
 
-interface DataTableProps {
+type DataTableProps = {
     data: IData[];
     columns: ColumnDef<IData>[];
     page: number;
