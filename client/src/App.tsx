@@ -1,16 +1,15 @@
-import { Route, Routes } from "react-router-dom"
-import HomePage from "./page/HomePage"
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './page/HomePage';
 
-
-function App() {
+const App = () => {
 
   return (
-    <div data-theme="cyberpunk">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </div>
-  )
-}
+    <Routes>
+      <Route path={"/"} element={<HomePage />} />
+      <Route path={"*"} element={<h1>Page not found!</h1>} />
+    </Routes>
+    
+  );
+};
 
-export default App
+export default App;

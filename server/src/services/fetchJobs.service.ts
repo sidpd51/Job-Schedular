@@ -18,6 +18,7 @@ export const fetchJobsFromXML = async (url: string) => {
 
         return Array.isArray(items) ? items : [items];
     } catch (error) {
+        console.log("fetchJobsFromXML: ", error);
         throw new InternalServerError(`Failed to fetch or parse jobs from ${url}`);
     }
 }

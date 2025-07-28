@@ -7,6 +7,6 @@ export default {
 	},
 	plugins: [daisyui],
 	daisyui: {
-		themes: ["cyberpunk"],
+		themes: ["cyberpunk", "corporate", "lemonade", "retro"],
 	},
 };
