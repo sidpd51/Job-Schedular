@@ -24,6 +24,11 @@ const customLevels = {
 
 addColors(customLevels.colors);
 
+type CustomLogger = winston.Logger & {
+    trace: (message: string, ...meta: any[]) => void;
+    fatal: (message: string, ...meta: any[]) => void;
+};
+
 export const logger = createLogger({
     level: process.env.LEVEL || 'info',
     levels: customLevels.levels,
@@ -38,4 +43,4 @@ export const logger = createLogger({
     transports: [
         new transports.Console(),
     ]
-})
+}) as CustomLogger;

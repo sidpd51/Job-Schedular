@@ -15,7 +15,7 @@ import { getAllImportLogsService } from './services/ImportLog.service';
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: serverConfig.FRONTEND_URL }));
 
 const httpServer = createServer(app);
 
@@ -24,7 +24,7 @@ const PORT: number = serverConfig.PORT;
 
 const io = new Server(httpServer, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: serverConfig.FRONTEND_URL,
         methods: ['GET']
     }
 })

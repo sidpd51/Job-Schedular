@@ -7,7 +7,7 @@ export const addJobToQueue = async (jobs: IJob[], batchSize = 1000) => {
     for (let i = 0; i < jobs.length; i += batchSize) {
         const batch = jobs.slice(i, i + batchSize).map(job => ({ name: JOB_QUEUE, data: job }));
         await jobQueue.addBulk(batch);
-        logger.info(`Enqueued batch ${(i / batchSize) + 1} with ${batch.length} jobs`);
+        logger.trace(`Enqueued batch ${(i / batchSize) + 1} with ${batch.length} jobs`);
     }
     logger.info(`Total ${jobs.length} jobs enqueued in batches`);
 }
