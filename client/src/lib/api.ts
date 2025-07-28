@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+const BACKEND_URL = import.meta.env.BACKEND_URL || 'http://localhost:3000/api/v1';
 
 export const fetchImportLog = async (page = 1, limit = 10) => {
     try {
