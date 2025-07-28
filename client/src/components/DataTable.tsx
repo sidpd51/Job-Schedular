@@ -4,27 +4,18 @@ import {
     getCoreRowModel,
     getSortedRowModel,
     type SortingState,
-    useReactTable,
+    useReactTable
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import type { IData } from '../hooks/useImportLog';
 
 interface DataTableProps {
     data: IData[];
+    columns: ColumnDef<IData>[]
 }
 
-const DataTable: React.FC<DataTableProps> = ({ data }) => {
+const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
     const [sorting, setSorting] = useState<SortingState>([]);
-    
-
-    const columns: ColumnDef<IData>[] = [
-        { accessorKey: 'fileName', header: 'file Name' },
-        { accessorKey: 'timestamp', header: 'Import DateTime' },
-        { accessorKey: 'totalImported', header: 'Total' },
-        { accessorKey: 'newJobs', header: 'New' },
-        { accessorKey: 'updatedJobs', header: 'Updated' },
-        { accessorKey: 'failedJobs', header: 'Failed' },
-    ];
 
     const table = useReactTable({
         data,
