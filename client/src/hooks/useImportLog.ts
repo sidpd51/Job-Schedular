@@ -26,10 +26,10 @@ export interface ImportLog {
 }
 
 // using polling for this one for now it will pull & refreshed data in every 60 seconds later will implement the websocket.io
-export const useImportLog = () => {
+export const useImportLog = (page = 1, limit = 10) => {
   return useQuery<ImportLog>({
-    queryKey: ['importHistory'],
-    queryFn: fetchImportLog,
-    refetchInterval: 60000,
+    queryKey: ['ImportLog', page, limit],
+    queryFn: () => fetchImportLog(page, limit),
+    refetchInterval: 5000
   });
 };
