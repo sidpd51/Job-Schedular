@@ -92,10 +92,24 @@ server/
 
 ### 🧩 Prerequisites
 
--   Node.js v18+
--   Redis (local or cloud)
--   MongoDB Atlas
--   Git
+Before running the project, ensure the following are installed and configured:
+
+- **Node.js** (v18+ recommended)
+- **npm** (comes with Node.js)
+- **Git**
+- **Redis** (running locally)
+    - Default Redis connection:
+        - `REDIS_HOST=localhost`
+        - `REDIS_PORT=6379`
+- **MongoDB Atlas** (or local MongoDB instance)
+    - Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+    - Replace in `.env`:
+      ```env
+      MONGODB_ATLAS_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<your-db-name>?retryWrites=true&w=majority
+      ```
+- ✅ Make sure Redis is running before starting the server.
+- ✅ Ensure your MongoDB Atlas URI allows access from your IP in Network Access settings.
+
 
 ### 🔧 Installation
 
