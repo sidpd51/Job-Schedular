@@ -1,69 +1,144 @@
-# React + TypeScript + Vite
+# Log Tracking Dashboard (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive dashboard for tracking import logs, built with React, TypeScript, Vite, Tailwind CSS, DaisyUI, and TanStack Query/Table.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   [Project Overview](#project-overview)
+-   [Features](#features)
+-   [Tech Stack](#tech-stack)
+-   [Project Structure](#project-structure)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+    -   [Environment Setup](#environment-setup)
+    -   [Available Scripts](#available-scripts)
+-   [Architecture](#architecture)
+-   [Contributing](#contributing)
+-   [License](#license)
 
-## Expanding the ESLint configuration
+## Project Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+A real-time log tracking dashboard that allows users to monitor import operations. Built with modern web technologies, it provides a responsive and intuitive interface for tracking system logs.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+-   **Real-time Log Tracking**: View import logs as they happen
+-   **Responsive Design**: Works seamlessly across devices
+-   **Data Management**:
+    -   Pagination
+    -   Sorting
+    -   Filtering
+-   **Modern UI Components**:
+    -   Interactive data tables
+    -   Loading states
+    -   Error handling
+    -   Responsive navigation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+-   **Frontend**: React 19, TypeScript
+-   **Build Tool**: Vite
+-   **Styling**: TailwindCSS, DaisyUI
+-   **Data Management**: TanStack Query
+-   **Table Component**: TanStack Table
+-   **HTTP Client**: Axios
+-   **Development Tools**: ESLint, Prettier
+
+## Project Structure
+
+```
+client/
+├── public/                # Static assets
+├── src/
+│   ├── assets/           # Images, icons, etc.
+│   ├── components/       # Reusable UI components
+│   │   ├── DataTable/    # Table component with pagination
+│   │   ├── Navbar/       # Navigation component
+│   │   └── common/       # Shared components
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utilities and API functions
+│   ├── pages/            # Page components
+│   ├── types/            # TypeScript definitions
+│   ├── App.tsx          # Root component
+│   └── main.tsx         # Entry point
+└── config files...       # Various configuration files
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-   Node.js (v18 or higher)
+-   npm or yarn
+-   Git
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/yourusername/log-tracking-dashboard.git
+    cd log-tracking-dashboard/client
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Environment Setup
+
+1. Copy the environment template:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+2. Update environment variables:
+    ```env
+    VITE_API_URL=http://localhost:3000/api
+    ```
+
+### Available Scripts
+
+-   **Development**:
+    ```bash
+    npm run dev
+    ```
+-   **Build**:
+    ```bash
+    npm run build
+    ```
+-   **Preview**:
+    ```bash
+    npm run preview
+    ```
+-   **Lint**:
+    ```bash
+    npm run lint
+    ```
+
+## Architecture
+
+The application follows a component-based architecture with:
+
+-   Modular components
+-   Custom hooks for data fetching
+-   Centralized state management
+-   Type-safe development
+-   API abstraction layer
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the
