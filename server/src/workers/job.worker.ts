@@ -26,10 +26,6 @@ export const startWorker = () => {
         } catch (error: any) {
             logger.warn(`Job ${job.id} failed on attempt ${job.attemptsMade}: ${error.message}`);
             throw error;
-            failedJobs.push({
-                job: data,
-                reason: error.message
-            });
 
         }
     }, { connection: getRedisClient(), concurrency: serverConfig.WORKER_CONCURRENCY });
@@ -44,7 +40,7 @@ export const startWorker = () => {
         const isExhausted = job.attemptsMade === job.opts?.attempts;
 
         if (isExhausted) {
-            logger.error(`❌ Job ${job.id} failed permanently after ${job.attemptsMade} attempts`);
+            logger.error(`Job ${job.id} failed permanently after ${job.attemptsMade} attempts`);
             failedJobs.push({
                 job: job.data,
                 reason: err.message
