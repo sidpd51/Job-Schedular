@@ -13,7 +13,7 @@ let failedJobs: IFailedJob[] = [];
 let totalFetched = 0;
 
 export const startWorker = () => {
-    new Worker(JOB_QUEUE, async (job: Job) => {
+    const worker = new Worker(JOB_QUEUE, async (job: Job) => {
         totalFetched++;
         const data = job.data;
         const id = data.id;
@@ -24,6 +24,8 @@ export const startWorker = () => {
             else
                 updatedJobs++;
         } catch (error: any) {
+            logger.warn(`Job ${job.id} failed on attempt ${job.attemptsMade}: ${error.message}`);
+            throw error;
             failedJobs.push({
                 job: data,
                 reason: error.message
@@ -31,6 +33,24 @@ export const startWorker = () => {
 
         }
     }, { connection: getRedisClient(), concurrency: serverConfig.WORKER_CONCURRENCY });
+
+
+    worker.on("failed", async (job: Job | undefined, err: Error) => {
+        if (!job) {
+            logger.error("Job is undefined on failed event.");
+            return;
+        }
+
+        const isExhausted = job.attemptsMade === job.opts?.attempts;
+
+        if (isExhausted) {
+            logger.error(`❌ Job ${job.id} failed permanently after ${job.attemptsMade} attempts`);
+            failedJobs.push({
+                job: job.data,
+                reason: err.message
+            });
+        }
+    });
 
     // this queueevent will be used to see if the queue is drained 
     // if the queue become empty what we can do is we can reset the fields to 0 & [] respectively
