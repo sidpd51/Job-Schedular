@@ -115,8 +115,8 @@ Before running the project, ensure the following are installed and configured:
 
 ```bash
 # Clone the repo
-git clone https://github.com/sidpd51/Knovator-Assignment.git
-cd Knovator-Assignment
+git clone https://github.com/sidpd51/Job-Schedular.git
+cd Job-Schedular
 ```
 
 ### Backend Setup
