@@ -194,7 +194,7 @@ The system uses a producer-consumer pattern with BullMQ and Redis, storing data 
 
 ### Admin Dashboard (with Pagination)
 
-![alt text](<Screenshot 2025-07-29 at 6.21.03 PM.png>)
+![alt text](<Screenshot 2025-08-07 at 2.05.45 AM.png>)
 
 ### Schema Design
 

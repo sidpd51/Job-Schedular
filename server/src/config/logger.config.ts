@@ -37,7 +37,7 @@ export const logger = createLogger({
         timestamp(),
         errors({ stack: true }),
         printf(({ level, message, timestamp }) => {
-            return `${timestamp} [${level}] [correlationid:${getCorrelationId()}] ${message} `;
+            return `${timestamp} [${level}] ${getCorrelationId() ? '[correlationid:' + getCorrelationId() + ']' : ''} ${message} `;
         })
     ),
     transports: [
