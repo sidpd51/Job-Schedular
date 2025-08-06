@@ -24,8 +24,8 @@ loadEnv();
 export const serverConfig: ServerConfigType = {
     PORT: Number(process.env.PORT) || 3000,
     URL: process.env.URL || '',
-    REDIS_HOST: process.env.REDIS_HOST!,
-    REDIS_PORT: Number(process.env.REDIS_PORT)!,
+    REDIS_HOST: process.env.REDIS_HOST || 'localhost',
+    REDIS_PORT: Number(process.env.REDIS_PORT) || 6379,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD!,
     MONGODB_ATLAS_URI: process.env.MONGODB_ATLAS_URI!,
     WORKER_CONCURRENCY: Number(process.env.WORKER_CONCURRENCY) || 5,
