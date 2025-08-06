@@ -5,9 +5,9 @@ export function DataTableFilter<TData>({ table }: { table: Table<TData> }) {
     return (
         <Input
             placeholder="Filter File Name..."
-            value={(table.getColumn("filename")?.getFilterValue() as string) ?? ""}
+            value={(table.getColumn("fileName")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
-                table.getColumn("filename")?.setFilterValue(event.target.value)
+                table.getColumn("fileName")?.setFilterValue(event.target.value)
             }
             className="max-w-sm"
         />

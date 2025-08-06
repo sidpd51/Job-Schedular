@@ -6,7 +6,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { type ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 
-export type IData = {
+export type LogType = {
+    _id: string,
     fileName: string;
     timestamp: string;
     totalFetched: number;
@@ -16,12 +17,12 @@ export type IData = {
     failedJobs: number;
 }
 
-const columns: ColumnDef<IData>[] = [
+const columns: ColumnDef<LogType>[] = [
     {
-        accessorKey: "filename",
+        accessorKey: "fileName",
         header: ({ column }) => (<DataTableColumnHeader column={column} title={"File Name"} />),
         cell: ({ row }) => {
-            const result = String(row.getValue("filename"));
+            const result = String(row.getValue("fileName"));
             return <div className="font-medium">{result}</div>
         }
     },
@@ -76,9 +77,9 @@ const columns: ColumnDef<IData>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(log.fileName)}
+                            onClick={() => navigator.clipboard.writeText(log._id)}
                         >
-                            Copy File Name
+                            Copy Log id
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
