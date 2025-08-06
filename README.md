@@ -4,7 +4,7 @@ A full-stack app for tracking job import logs in real-time. Built with **React (
 
 ---
 
-![alt text](<docs/Screenshot 2025-07-29 at 6.21.03 PM.png>)
+![docs/Screenshot 2025-08-07 at 2.05.45 AM.png](<docs/Screenshot 2025-08-07 at 2.05.45 AM.png>)
 
 ---
 
@@ -127,7 +127,7 @@ cp .env.example .env
 
 # Update .env
 # PORT=3000
-# LEVEL=trace
+# LEVEL=trace(keep this as default)
 # URL=<XML_FEED_URL>
 # REDIS_HOST=localhost
 # REDIS_PORT=6379
