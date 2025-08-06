@@ -1,7 +1,8 @@
 import columns from "@/columns/column";
-import { DataTable } from "@/components/data-table/data-table-column-header";
+import { DataTable } from "@/components/data-table/data-table";
 import { fetchImportLog } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
+import ErrorPage from "./ErrorPage";
 
 function HomePage() {
   const { isPending, data, error } = useQuery({
@@ -10,7 +11,7 @@ function HomePage() {
     refetchInterval: Number(import.meta.env.VITE_REFETCH_INTERVAL) || 20000
   });
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (error) return <ErrorPage title={"Internal server error"} errorCode={500} />
 
   return (
     <div>
