@@ -43,3 +43,22 @@ export const getAllImportLogs = async (page = 1, limit = 10) => {
         },
     };
 }
+
+export const getAllImports = async () => {
+    const logs = await ImportLog.aggregate([
+        { $sort: { timestamp: -1 } },
+        {
+            $project: {
+                fileName: 1,
+                timestamp: 1,
+                totalFetched: 1,
+                totalImported: 1,
+                newJobs: 1,
+                updatedJobs: 1,
+                failedJobs: { $size: { $ifNull: ["$failedJobs", []] } }
+            }
+        }
+    ])
+
+    return logs;
+}

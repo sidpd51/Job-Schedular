@@ -1,8 +1,8 @@
 import express from 'express';
-import { getAllImportLogsHandler } from '../../controllers/ImportLog.controller';
+import { getAllImportsHandler } from '../../controllers/ImportLog.controller';
 
 const importLogRouter = express.Router();
 
-importLogRouter.get('/', getAllImportLogsHandler);
+importLogRouter.get('/', getAllImportsHandler);
 
 export default importLogRouter;
