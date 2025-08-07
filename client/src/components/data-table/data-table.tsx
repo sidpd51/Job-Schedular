@@ -39,9 +39,9 @@ export function DataTable<TData, TValue>({
         }
     });
 
-    
+
     return (
-        <div className="mx-3 mt-3">
+        <div className="col-span-full">
             <div className="flex items-center py-4">
                 <DataTableFilter table={table} />
                 <DataTableViewOptions table={table} />
