@@ -62,3 +62,9 @@ export const getAllImports = async () => {
 
     return logs;
 }
+
+export const getTotalLogsCount = async () => {
+    const logCount = await ImportLog.countDocuments({});
+    console.log(logCount);
+    return logCount;
+}

@@ -16,3 +16,9 @@ export const createOrUpdateJob = async (id: number, jobPayload: Partial<IJob>) =
         throw error;
     }
 }
+
+export const getTotalJobsCount = async () => {
+    const jobCount = await Job.countDocuments({});
+    console.log(jobCount);
+    return jobCount;
+}

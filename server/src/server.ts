@@ -1,16 +1,16 @@
+import cors from 'cors';
 import express from 'express';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 import { serverConfig } from './config';
+import { logger } from './config/logger.config';
 import { getMongoClient } from './config/mongo.config';
+import { startCronJobs } from './cronJobs/job.cron';
 import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
 import { appErrorHandler } from './middlewares/error.middleware';
 import router from './routers/v1';
-import { startWorker } from './workers/job.worker';
-import { startCronJobs } from './cronJobs/job.cron';
-import cors from 'cors';
-import { createServer } from 'http';
-import { Server } from 'socket.io';
-import { logger } from './config/logger.config';
 import { getAllImportLogsService } from './services/ImportLog.service';
+import { startWorker } from './workers/job.worker';
 
 
 const app = express();

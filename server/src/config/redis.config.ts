@@ -8,6 +8,7 @@ function connectToRedis() {
             host: serverConfig.REDIS_HOST,
             port: serverConfig.REDIS_PORT,
             password: serverConfig.REDIS_PASSWORD,
+            username: 'default',
             maxRetriesPerRequest: null,
         }
         return () => {
